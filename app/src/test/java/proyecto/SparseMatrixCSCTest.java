@@ -345,6 +345,8 @@ class SparseMatrixCSCTest {
         assertTrue(Arrays.equals(valuesE, inst.getValues()));
     }
 
+    // Se hizo cambio de la prueba por las implementadas en Python
+
     @Test
     void getTransposedMatrix() throws OperationNotSupportedException, FileNotFoundException {
         SparseMatrixCSC instance = new SparseMatrixCSC();
