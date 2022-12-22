@@ -121,7 +121,8 @@ public class SparseMatrixCSR {
         SparseMatrixCSR squaredMatrix = new SparseMatrixCSR();
 
         // Usar los metodos Set aqui de los atributos
-        int rows = matrix.length, colum = matrix[0].length;
+        int rows = matrix.length;
+        int colum = matrix[0].length;
         int[][] matrixTranspose = new int[colum][rows];
 
         for (int i = 0; i < rows; i++) {
