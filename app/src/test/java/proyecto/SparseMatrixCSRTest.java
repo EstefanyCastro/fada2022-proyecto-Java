@@ -17,7 +17,6 @@ class SparseMatrixCSRTest {
     private String file4 = "inputs/matrix4.in";
     private String file5 = "inputs/matrix5.in";
 
-
     @Test
     void createRepresentation() throws FileNotFoundException, OperationNotSupportedException {
         SparseMatrixCSR instance = new SparseMatrixCSR();
@@ -45,7 +44,6 @@ class SparseMatrixCSRTest {
         int rowsB[] = {0, 2, 3, 6, 7, 10, 12, 15, 16, 19, 20};
         int colsB[] = {1, 2, 1, 1, 2, 5, 2, 1, 2, 7, 4, 5, 0, 1, 2, 6, 0, 1, 6, 0};
         int valuesB[] = {1, 4, 1, 1, 2, 8, 3, 1, 4, 9, 7, 3, 1, 2, 3, 9, 1, 1, 7, 9};
-
         assertTrue(Arrays.equals(rowsB, instance.getRows()));
         assertTrue(Arrays.equals(colsB, instance.getColumns()));
         assertTrue(Arrays.equals(valuesB, instance.getValues()));
@@ -74,7 +72,6 @@ class SparseMatrixCSRTest {
         int rowsE[] = {0, 2, 6, 10, 14, 18, 21, 27, 30, 35, 38, 38, 42, 45, 53, 59};
         int colsE[] = {1, 2, 1, 8, 9, 14, 1, 2, 5, 14, 2, 10, 13, 14, 1, 2, 7, 10, 4, 5, 10, 0, 1, 2, 10, 13, 14, 6, 9, 13, 0, 1, 6, 11, 14, 0, 10, 13, 3, 5, 6, 13, 1, 2, 13, 0, 1, 2, 3, 4, 5, 6, 13, 0, 1, 2, 7, 8, 9};
         int valuesE[] = {1, 4, 1, 1, 1, 1, 1, 2, 8, 2, 3, 3, 2, 4, 1, 4, 9, 9, 7, 3, 7, 1, 2, 3, 6, 7, 3, 9, 9, 7, 1, 1, 7, 1, 1, 9, 4, 2, 4, 3, 6, 9, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 3, 2, 2, 2, 2, 2, 2};
-
         assertTrue(Arrays.equals(rowsE, instance.getRows()));
         assertTrue(Arrays.equals(colsE, instance.getColumns()));
         assertTrue(Arrays.equals(valuesE, instance.getValues()));
@@ -83,6 +80,7 @@ class SparseMatrixCSRTest {
     @Test
     void getElement() throws OperationNotSupportedException, FileNotFoundException {
         SparseMatrixCSR instance = new SparseMatrixCSR();
+
         //Test 1
         instance.createRepresentation(file1);
         assertEquals(instance.getElement(0, 0), 0);
@@ -117,115 +115,101 @@ class SparseMatrixCSRTest {
     @Test
     void getRow() throws OperationNotSupportedException, FileNotFoundException {
         SparseMatrixCSR instance = new SparseMatrixCSR();
+
         //Test 1
         instance.createRepresentation(file1);
         assertTrue(Arrays.equals(
                 instance.getRow(2),
-                new int[]{0, 1, 2, 0, 0, 8, 0, 0}
-        ));
+                new int[]{0, 1, 2, 0, 0, 8, 0, 0}));
         assertTrue(Arrays.equals(
                 instance.getRow(4),
-                new int[]{0, 1, 4, 0, 0, 0, 0, 9}
-        ));
+                new int[]{0, 1, 4, 0, 0, 0, 0, 9}));
 
         //Test 2
         instance.createRepresentation(file2);
         assertTrue(Arrays.equals(
                 instance.getRow(5),
-                new int[]{0, 0, 0, 0, 7, 3, 0, 0}
-        ));
+                new int[]{0, 0, 0, 0, 7, 3, 0, 0}));
         assertTrue(Arrays.equals(
                 instance.getRow(8),
-                new int[]{1, 1, 0, 0, 0, 0, 7, 0}
-        ));
+                new int[]{1, 1, 0, 0, 0, 0, 7, 0}));
+
         //Test 3
         instance.createRepresentation(file3);
         assertTrue(Arrays.equals(
                 instance.getRow(5),
-                new int[]{0, 0, 0, 0, 7, 3, 0, 0, 0, 0, 7, 0}
-        ));
+                new int[]{0, 0, 0, 0, 7, 3, 0, 0, 0, 0, 7, 0}));
         assertTrue(Arrays.equals(
                 instance.getRow(9),
-                new int[]{9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0}
-        ));
+                new int[]{9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0}));
+
         //Test 4
         instance.createRepresentation(file4);
         assertTrue(Arrays.equals(
                 instance.getRow(9),
-                new int[]{9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0}
-        ));
+                new int[]{9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0}));
         assertTrue(Arrays.equals(
                 instance.getRow(14),
-                new int[]{2, 2, 2, 0, 0, 0, 0, 2, 2, 2, 0, 0}
-        ));
+                new int[]{2, 2, 2, 0, 0, 0, 0, 2, 2, 2, 0, 0}));
 
         //Test 5
         instance.createRepresentation(file5);
         assertTrue(Arrays.equals(
                 instance.getRow(2),
-                new int[]{0, 1, 2, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 2}
-        ));
+                new int[]{0, 1, 2, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 2}));
         assertTrue(Arrays.equals(
                 instance.getRow(13),
-                new int[]{1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 3, 0}
-        ));
+                new int[]{1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 3, 0}));
     }
 
     @Test
     void getColumn() throws OperationNotSupportedException, FileNotFoundException {
         SparseMatrixCSR instance = new SparseMatrixCSR();
+
         //Test 1
         instance.createRepresentation(file1);
         assertTrue(Arrays.equals(
                 instance.getColumn(1),
-                new int[]{1, 1, 1, 0, 1}
-        ));
+                new int[]{1, 1, 1, 0, 1}));
         assertTrue(Arrays.equals(
                 instance.getColumn(4),
-                new int[]{0, 0, 0, 0, 0}
-        ));
+                new int[]{0, 0, 0, 0, 0}));
 
         //Test 2
         instance.createRepresentation(file2);
         assertTrue(Arrays.equals(
                 instance.getColumn(5),
-                new int[]{0, 0, 8, 0, 0, 3, 0, 0, 0, 0}
-        ));
+                new int[]{0, 0, 8, 0, 0, 3, 0, 0, 0, 0}));
         assertTrue(Arrays.equals(
                 instance.getColumn(6),
-                new int[]{0, 0, 0, 0, 0, 0, 0, 9, 7, 0}
-        ));
+                new int[]{0, 0, 0, 0, 0, 0, 0, 9, 7, 0}));
+
         //Test 3
         instance.createRepresentation(file3);
         assertTrue(Arrays.equals(
                 instance.getColumn(5),
-                new int[]{0, 0, 8, 0, 0, 3, 0, 0, 0, 0}
-        ));
+                new int[]{0, 0, 8, 0, 0, 3, 0, 0, 0, 0}));
         assertTrue(Arrays.equals(
                 instance.getColumn(9),
-                new int[]{0, 1, 0, 0, 0, 0, 0, 9, 0, 0}
-        ));
+                new int[]{0, 1, 0, 0, 0, 0, 0, 9, 0, 0}));
+
         //Test 4
         instance.createRepresentation(file4);
         assertTrue(Arrays.equals(
                 instance.getColumn(9),
-                new int[]{0, 1, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 2}
-        ));
+                new int[]{0, 1, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 2}));
         assertTrue(Arrays.equals(
                 instance.getColumn(10),
-                new int[]{0, 0, 0, 3, 9, 7, 6, 0, 0, 4, 0, 0, 0, 0, 0}
-        ));
+                new int[]{0, 0, 0, 3, 9, 7, 6, 0, 0, 4, 0, 0, 0, 0, 0}));
 
         //Test 5
         instance.createRepresentation(file5);
         assertTrue(Arrays.equals(
                 instance.getColumn(2),
-                new int[]{4, 0, 2, 3, 4, 0, 3, 0, 0, 0, 0, 0, 1, 1, 2}
-        ));
+                new int[]{4, 0, 2, 3, 4, 0, 3, 0, 0, 0, 0, 0, 1, 1, 2}));
         assertTrue(Arrays.equals(
                 instance.getColumn(13),
-                new int[]{0, 0, 0, 2, 0, 0, 7, 7, 0, 2, 0, 9, 2, 3, 0}
-        ));
+                new int[]{0, 0, 0, 2, 0, 0, 7, 7, 0, 2, 0, 9, 2, 3, 0}));
     }
 
     @Test
@@ -258,7 +242,6 @@ class SparseMatrixCSRTest {
         int rowsB[] = {0, 3, 4, 7, 8, 11, 13, 16, 17, 20, 21};
         int colsB[] = {1, 2, 4, 1, 1, 2, 5, 2, 1, 2, 7, 4, 5, 0, 1, 2, 6, 0, 1, 6, 0};
         int valuesB[] = {1, 4, 10, 1, 1, 2, 8, 3, 1, 4, 9, 7, 3, 1, 2, 3, 9, 1, 1, 7, 9};
-
         assertTrue(Arrays.equals(rowsB, instance.getRows()));
         assertTrue(Arrays.equals(colsB, instance.getColumns()));
         assertTrue(Arrays.equals(valuesB, instance.getValues()));
@@ -355,7 +338,6 @@ class SparseMatrixCSRTest {
         int rowsE[] = {0, 2, 6, 10, 14, 18, 21, 27, 30, 35, 38, 38, 42, 45, 53, 59};
         int colsE[] = {1, 2, 1, 8, 9, 14, 1, 2, 5, 14, 2, 10, 13, 14, 1, 2, 7, 10, 4, 5, 10, 0, 1, 2, 10, 13, 14, 6, 9, 13, 0, 1, 6, 11, 14, 0, 10, 13, 3, 5, 6, 13, 1, 2, 13, 0, 1, 2, 3, 4, 5, 6, 13, 0, 1, 2, 7, 8, 9};
         int valuesE[] = {1, 16, 1, 1, 1, 1, 1, 4, 64, 4, 9, 9, 4, 16, 1, 16, 81, 81, 49, 9, 49, 1, 4, 9, 36, 49, 9, 81, 81, 49, 1, 1, 49, 1, 1, 81, 16, 4, 16, 9, 36, 81, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 9, 4, 4, 4, 4, 4, 4};
-
         inst = instance.getSquareMatrix();
         assertTrue(Arrays.equals(rowsE, inst.getRows()));
         assertTrue(Arrays.equals(colsE, inst.getColumns()));
@@ -383,7 +365,6 @@ class SparseMatrixCSRTest {
         int rowsB[] = {0, 3, 9, 14, 14, 15, 17, 19, 20};
         int colsB[] = {6, 8, 9, 0, 1, 2, 4, 6, 8, 0, 2, 3, 4, 6, 5, 2, 5, 7, 8, 4};
         int valuesB[] = {1, 1, 9, 1, 1, 1, 1, 2, 1, 4, 2, 3, 4, 3, 7, 8, 3, 9, 7, 9};
-
         assertTrue(Arrays.equals(rowsB, inst.getRows()));
         assertTrue(Arrays.equals(colsB, inst.getColumns()));
         assertTrue(Arrays.equals(valuesB, inst.getValues()));
@@ -414,7 +395,6 @@ class SparseMatrixCSRTest {
         int rowsE[] = {0, 5, 14, 22, 24, 26, 30, 34, 36, 38, 41, 46, 47, 47, 54, 59};
         int colsE[] = {6, 8, 9, 13, 14, 0, 1, 2, 4, 6, 8, 12, 13, 14, 0, 2, 3, 4, 6, 12, 13, 14, 11, 13, 5, 13, 2, 5, 11, 13, 7, 8, 11, 13, 4, 14, 1, 14, 1, 7, 14, 3, 4, 5, 6, 9, 8, 3, 6, 7, 9, 11, 12, 13, 1, 2, 3, 6, 8};
         int valuesE[] = {1, 1, 9, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 2, 4, 2, 3, 4, 3, 1, 1, 2, 4, 1, 7, 1, 8, 3, 3, 1, 9, 7, 6, 1, 9, 2, 1, 2, 1, 9, 2, 3, 9, 7, 6, 4, 1, 2, 7, 7, 2, 9, 2, 3, 1, 2, 4, 3, 1};
-
         assertTrue(Arrays.equals(rowsE, inst.getRows()));
         assertTrue(Arrays.equals(colsE, inst.getColumns()));
         assertTrue(Arrays.equals(valuesE, inst.getValues()));

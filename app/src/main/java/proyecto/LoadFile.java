@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /*
-* Class for loading matrix representation files.
+ * Class for loading matrix representation files.
  */
 public class LoadFile {
 
@@ -25,10 +25,8 @@ public class LoadFile {
         int rows = reader.nextInt();
         int cols = reader.nextInt();
         this.matrix = new int[rows][cols];
-        for (int i = 0; i < rows; i++)
-        {
-            for (int j = 0; j < cols; j++)
-            {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
                 matrix[i][j] = reader.nextInt();
             }
         }
